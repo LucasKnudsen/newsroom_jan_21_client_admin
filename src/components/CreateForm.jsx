@@ -1,10 +1,8 @@
 import React from 'react'
-import { Form, Grid, Segment, Input, Radio, TextArea, Button } from 'semantic-ui-react'
+import { Form, Grid, Segment, Input, TextArea } from 'semantic-ui-react'
+import { createArticle } from '../modules/articleModules'
 
 const CreateForm = () => {
-  const createArticle = async event => {
-    let response = await createArticleRequest(event)
-  }
 
   return (
     <Segment>
@@ -35,7 +33,7 @@ const CreateForm = () => {
           </Grid.Column>
           <Grid.Column verticalAlign="middle">
             <Form.Group inline >
-              <input data-cy="article-type-field" type="radio" id="experience" name="article_type" value="male" />
+              <input data-cy="article-type-field" type="radio" id="experience" name="article_type" value="experience" />
               <label for="experience">Experience</label>
               <input data-cy="article-type-field" type="radio" id="story" name="article_type" value="story" />
               <label for="story">Story</label>

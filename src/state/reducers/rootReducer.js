@@ -8,6 +8,11 @@ const rootReducer = (state = initialState, action) => {
         authenticated: true,
         name: action.payload.name
       }
+    case "CREATE_ARTICLE":
+      return {
+        ...state,
+        message: action.payload
+      }
     default:
       return state
   }

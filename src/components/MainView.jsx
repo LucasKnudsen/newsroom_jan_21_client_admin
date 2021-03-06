@@ -5,21 +5,21 @@ import LoginForm from './LoginForm'
 import CreateForm from './CreateForm'
 
 const MainView = () => {
-  const { authenticated } = useSelector(state => state)
-  const { name } = useSelector(state => state)
+  const { authenticated, message, name } = useSelector(state => state)
 
   return (
     <Grid centered columns={1} className="main-view">
       <Grid.Column verticalAlign="middle" width={10}>
         {!authenticated ? (
           <>
-            <Header size="massive">Hello!</Header>
+            <Header size="huge">Hello!</Header>
             <Header>Please login</Header>
             <LoginForm />
           </>
         ) : (
             <>
-              <Header data-cy="welcome-message">Welcome back {name}!</Header>
+              <Header size="huge" data-cy="welcome-message">Welcome back {name}!</Header>
+              {message && <p data-cy="message">{message}</p> }
               <CreateForm />
             </>
           )}
