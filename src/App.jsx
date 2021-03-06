@@ -1,8 +1,10 @@
 import React from 'react'
+import MainView from './components/MainView'
 
 const App = () => {
   return (
-    <div >
+    <div>
+      <MainView />
     </div>
   );
 }
