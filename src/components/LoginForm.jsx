@@ -39,6 +39,7 @@ const LoginForm = () => {
                 label="email"
                 control={Input}
                 placeholder="email"
+                required
               />
               <Form.Field
                 name="password"
@@ -47,6 +48,7 @@ const LoginForm = () => {
                 label="password"
                 control={Input}
                 placeholder="password"
+                required
               />
               <Button color="brown" data-cy="submit">Log in!</Button>
             </Segment>
