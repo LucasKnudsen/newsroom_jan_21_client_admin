@@ -1,22 +1,30 @@
 import React from 'react'
 import { Grid, Header } from 'semantic-ui-react'
 import { useSelector } from 'react-redux'
+import LoginForm from './LoginForm'
+import CreateForm from './CreateForm'
 
-export const CreateForm = () => {
+const MainView = () => {
   const { authenticated } = useSelector(state => state)
+  const { name } = useSelector(state => state)
+
   return (
-    <Grid>
-      <Grid.Row>
-        <Header size="massive">Welcome!</Header>
-        {authenticated ? (
+    <Grid centered columns={1} className="main-view">
+      <Grid.Column verticalAlign="middle" width={10}>
+        {!authenticated ? (
           <>
+            <Header size="massive">Hello!</Header>
             <Header>Please login</Header>
             <LoginForm />
           </>
         ) : (
-            <CreateForm />
+            <>
+              <Header data-cy="welcome-message">Welcome back {name}!</Header>
+              <CreateForm />
+            </>
           )}
-      </Grid.Row>
+      </Grid.Column>
     </Grid>
   )
 }
+export default MainView

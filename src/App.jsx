@@ -1,5 +1,6 @@
 import React from 'react'
 import MainView from './components/MainView'
+import './app.css'
 
 const App = () => {
   return (

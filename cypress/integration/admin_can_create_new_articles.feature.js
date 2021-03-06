@@ -10,6 +10,12 @@ describe('admin can login to create a new article', () => {
       }
     })
     cy.visit('/')
+    cy.get('[data-cy="sign-in-button"]').click()
+    cy.get('[data-cy="registration-form"]').within(() => {
+      cy.get('[data-cy="email-field"]').type('user@email.com')
+      cy.get('[data-cy="password-field"]').type('password')
+      cy.get('[data-cy="submit"]').click()
+    })
   })
   describe('successfully', () => {
     beforeEach(() => {
@@ -20,6 +26,10 @@ describe('admin can login to create a new article', () => {
           message: "The article was successfully created!"
         }
       })
+    })
+
+    it('displays a welcome message', () => {
+      cy.get('[data-cy="welcome-message"]').should('contain', 'Welcome back Mr. Miyagi!')
     })
 
     it('displays a success message', () => {
