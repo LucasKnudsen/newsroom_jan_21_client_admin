@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Grid, Modal, Header, Segment, Input, Button, Form } from 'semantic-ui-react'
-import { signIn } from '../modules/authenticationModules'
+import { signingIn } from '../modules/authenticationModules'
 
 const LoginForm = () => {
   const [open, setOpen] = useState(false)
   const [errorMessage, setErrorMessage] = useState()
 
   const signInAdmin = async (event) => {
-    let response = await signIn(event)
+    let response = await signingIn(event)
     if (response) {
       setErrorMessage(response)
     } else {
@@ -24,12 +24,9 @@ const LoginForm = () => {
     >
       <Grid className="login-modal" textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h1' color='brown' textAlign='center'>
-            Get crackin'!
+          <Header style={{ fontSize: 40}}color='brown' textAlign='center'>
+            GET CRACKIN'!
           </Header>
-          {errorMessage &&
-            <p data-cy="error-message">{errorMessage}</p>
-          }
           <Form onSubmit={(event) => signInAdmin(event)} data-cy="registration-form" size="large">
             <Segment>
               <Form.Field
@@ -51,6 +48,10 @@ const LoginForm = () => {
                 required
               />
               <Button color="brown" data-cy="submit">Log in!</Button>
+              <br />
+              {errorMessage &&
+                <p data-cy="error-message">{errorMessage}</p>
+              }
             </Segment>
           </Form>
         </Grid.Column>
