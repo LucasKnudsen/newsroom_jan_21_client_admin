@@ -1,8 +1,10 @@
 {
+  "data": {
     "name": "Mr. Miyagi",
     "email": "user@gmail.com",
     "uid": "user@gmail.com",
     "id": 11,
     "provider": "email",
     "allow_password_change": false
+  }
 }

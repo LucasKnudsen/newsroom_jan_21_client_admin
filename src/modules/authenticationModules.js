@@ -17,11 +17,21 @@ const signIn = async (event) => {
       token_type: 'Bearer'
     }
     localStorage.setItem('credentials', JSON.stringify(userCredentials))
-    store.dispatch({type: "AUTHENTICATE", payload: response.data})
+    store.dispatch({type: "AUTHENTICATE", payload: response.data.data})
   } catch (error) {
     return error.response ? error.response.data.errors.full_messages : error.message
   }
-
 }
 
-export { signIn }
+const validateToken = async () => {
+  let auth_headers = JSON.parse(localStorage.getItem('credentials'))
+  try {
+    let response = await axios.get('/admin_auth/validate_token', { headers: auth_headers })
+    store.dispatch({type: "AUTHENTICATE", payload: response.data.data})
+  }
+  catch (error) {
+    store.dispatch({type: "UN_AUTHENTICATE"})
+  }
+}
+
+export { signIn, validateToken }
