@@ -12,7 +12,6 @@ const createArticle = async event => {
     category: event.target.category.value,
     location: event.target.location.value
   }
-  debugger
   try {
     let response = await axios.post('/articles', params, { headers: auth_headers })
     store.dispatch({ type: "CREATE_ARTICLE", payload: response.data.message })
