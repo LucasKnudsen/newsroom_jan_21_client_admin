@@ -7,7 +7,7 @@ import axios from 'axios'
 import { Provider } from 'react-redux'
 import store from './state/stores/configureStore'
 
-axios.defaults.baseURL = 'http://localhost:3000/api'
+axios.defaults.baseURL = 'https://get-local-api.herokuapp.com/api'
 
 ReactDOM.render(
   <Provider store={store}>
