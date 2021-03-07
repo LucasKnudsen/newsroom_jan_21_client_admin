@@ -15,6 +15,7 @@ const createArticle = async event => {
   try {
     let response = await axios.post('/articles', params, { headers: auth_headers })
     store.dispatch({ type: "CREATE_ARTICLE", payload: response.data.message })
+    event.target.reset()
   } catch (error) {
     let message = error.response ? error.response.data.message : error.message
     store.dispatch({ type: "CREATE_ARTICLE", payload: message })
