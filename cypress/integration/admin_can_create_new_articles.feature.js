@@ -16,6 +16,14 @@ describe('admin can login to create a new article', () => {
       cy.get('[data-cy="password-field"]').type('password')
       cy.get('[data-cy="submit"]').click()
     })
+    cy.route({
+      method: 'GET', 
+      url: 'http://localhost:3000/api/admin_auth/validate_token',
+      response: 'fixture:sign_in.json',
+      headers: {
+        uid: 'user@gmail.com'
+      }
+    })
   })
   describe('successfully', () => {
     beforeEach(() => {
@@ -36,7 +44,7 @@ describe('admin can login to create a new article', () => {
       cy.get('[data-cy="create-form"]').within(() => {
         cy.get('[data-cy="title-field"]').type('Test title')
         cy.get('[data-cy="teaser-field"]').type('Test teaser')
-        cy.get('[data-cy="body-field"]').type('Test body')
+        cy.get('[data-cy="body-field"]').type('Test body.{enter}{enter}More test body!')
         cy.get('[data-cy="article-type-field"]').eq(1).check()
         cy.get('[data-cy="category-field"]').type('News')
         cy.get('[data-cy="location-field"]').type('Frederiksdal')
@@ -60,7 +68,7 @@ describe('admin can login to create a new article', () => {
     it('displays an error message', () => {
       cy.get('[data-cy="create-form"]').within(() => {
         cy.get('[data-cy="teaser-field"]').type('Test teaser')
-        cy.get('[data-cy="body-field"]').type('Test body')
+        cy.get('[data-cy="body-field"]').type('Test body.{enter}{enter}More test body!')
         cy.get('[data-cy="article-type-field"]').first().check()
         cy.get('[data-cy="category-field"]').type('news')
         cy.get('[data-cy="location-field"]').type('Frederiksdal')

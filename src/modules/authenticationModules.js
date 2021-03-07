@@ -25,13 +25,8 @@ const signIn = async (event) => {
 
 const validateToken = async () => {
   let auth_headers = JSON.parse(localStorage.getItem('credentials'))
-  try {
     let response = await axios.get('/admin_auth/validate_token', { headers: auth_headers })
     store.dispatch({type: "AUTHENTICATE", payload: response.data.data})
-  }
-  catch (error) {
-    store.dispatch({type: "UN_AUTHENTICATE"})
-  }
 }
 
 export { signIn, validateToken }

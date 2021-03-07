@@ -25,6 +25,7 @@ const CreateForm = () => {
             />
             <Form.Field
               name="body"
+              rows="5"
               label="Content"
               data-cy="body-field"
               control={TextArea}
