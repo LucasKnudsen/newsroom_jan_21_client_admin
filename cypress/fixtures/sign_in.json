@@ -3,7 +3,7 @@
     "name": "Mr. Miyagi",
     "email": "user@gmail.com",
     "uid": "user@gmail.com",
-    "id": 11,
+    "id": 1,
     "provider": "email",
     "allow_password_change": false
   }

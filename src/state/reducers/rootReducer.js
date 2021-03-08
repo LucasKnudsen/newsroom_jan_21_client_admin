@@ -12,17 +12,22 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         articles: action.payload,
-        dashboard_message: ''
+        dashboardMessage: ''
+      }
+    case "SUCCESS_MESSAGE":
+      return {
+        ...state,
+        successMessage: action.payload
       }
     case "DASHBOARD_MESSAGE":
       return {
         ...state,
-        dashboard_message: action.payload
+        dashboardMessage: action.payload
       }
     case "FORM_MESSAGE":
       return {
         ...state,
-        form_message: action.payload
+        formMessage: action.payload
       }
     default:
       return state

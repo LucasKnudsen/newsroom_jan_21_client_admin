@@ -4,7 +4,7 @@ import { getArticles } from '../modules/articleModules'
 import { useSelector } from 'react-redux'
 
 const Dashboard = () => {
-  const { articles, dashboard_message } = useSelector(state => state)
+  const { articles, dashboardMessage } = useSelector(state => state)
 
   useEffect(() => {
     getArticles()
@@ -26,8 +26,8 @@ const Dashboard = () => {
 
   return (
     <Segment textAlign="left" data-cy="dashboard-wrapper">
-      <Header>Your Articles:</Header>
-      {dashboard_message ? <p data-cy="message">{dashboard_message}</p> : (
+      <Header textAlign="center" dividing size="huge">Your Articles:</Header>
+      {dashboardMessage ? <p data-cy="message">{dashboardMessage}</p> : (
         <Item.Group divided>
           {articleList}
         </Item.Group>
@@ -37,7 +37,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard
-
-// Get some data
-// Store this data (either local state, application state)
-// Take this data and display it in an Items list
