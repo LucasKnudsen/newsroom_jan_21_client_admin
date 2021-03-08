@@ -8,7 +8,7 @@ import { validateToken } from '../modules/authenticationModules'
 import logo from '../assets/logo.png'
 
 const MainView = () => {
-  const { authenticated, message, name } = useSelector(state => state)
+  const { authenticated, form_message, name } = useSelector(state => state)
 
   useEffect(() => {
     validateToken()
@@ -25,7 +25,7 @@ const MainView = () => {
         ) : (
             <>
               <Header size="huge" data-cy="welcome-message">Welcome back {name}!</Header>
-              {message && <p data-cy="message">{message}</p>}
+              {form_message && <p data-cy="form_message">{form_message}</p>}
               <Dashboard />
             </>
           )}

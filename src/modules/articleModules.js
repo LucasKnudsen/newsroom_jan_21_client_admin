@@ -1,8 +1,18 @@
 import axios from 'axios'
 import store from '../state/stores/configureStore'
 
-const getArticles = async => {
-
+const getArticles = async () => {
+  let auth_headers = JSON.parse(localStorage.getItem('credentials'))
+  try {
+    let response = await axios.get('/admin/articles', auth_headers)
+    if (response.data.articles) {
+      store.dispatch({ type: "FETCH_ARTICLES", payload: response.data.articles})
+    } else {
+      store.dispatch({ type: "DASHBOARD_MESSAGE", payload: response.data.message })
+    }
+  } catch (error) {
+    store.dispatch({ type: "DASHBOARD_MESSAGE", payload: error.message })
+  }
 }
 
 const createArticle = async event => {
@@ -18,11 +28,11 @@ const createArticle = async event => {
   }
   try {
     let response = await axios.post('/admin/articles', params, { headers: auth_headers })
-    store.dispatch({ type: "CREATE_ARTICLE", payload: response.data.message })
+    store.dispatch({ type: "FORM_MESSAGE", payload: response.data.message })
     event.target.reset()
   } catch (error) {
     let message = error.response ? error.response.data.message : error.message
-    store.dispatch({ type: "CREATE_ARTICLE", payload: message })
+    store.dispatch({ type: "FORM_MESSAGE", payload: message })
   }
 }
 
