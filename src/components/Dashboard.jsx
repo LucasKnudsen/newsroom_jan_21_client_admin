@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Segment, Item, Header } from 'semantic-ui-react'
+import { Segment, Item, Header} from 'semantic-ui-react'
 import { getArticles } from '../modules/articleModules'
 import { useSelector } from 'react-redux'
 
@@ -25,10 +25,10 @@ const Dashboard = () => {
   }
 
   return (
-    <Segment textAlign="left" data-cy="dashboard-wrapper">
-      <Header textAlign="center" dividing size="huge">Your Articles:</Header>
+    <Segment textAlign="left" data-cy="dashboard-wrapper" >
+      <Header dividing size="huge">Your Articles</Header>
       {dashboardMessage ? <p data-cy="message">{dashboardMessage}</p> : (
-        <Item.Group divided>
+        <Item.Group divided style={{ overflow: 'auto', height: 350 }}>
           {articleList}
         </Item.Group>
       )}

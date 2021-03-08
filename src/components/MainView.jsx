@@ -16,15 +16,15 @@ const MainView = () => {
 
   return (
     <Grid centered columns={1} className="main-view">
-      <Grid.Column textAlign="center" verticalAlign="middle" width={10}>
+      <Grid.Column textAlign="center" verticalAlign="top" style={{marginTop: 50}} width={10}>
         {!authenticated ? (
           <>
-            <Image centered alt="logo" src={logo} style={{ width: 200 }} />
+            <Image centered alt="logo" src={logo} style={{ width: 250 }} />
             <LoginForm />
           </>
         ) : (
             <>
-              <Header style={{ fontSize: 35 }} color="blue" data-cy="welcome-message">Welcome back {name}!</Header>
+              <Header style={{ fontSize: 30 }} color="blue" data-cy="welcome-message">Welcome back {name}!</Header>
               <CreateForm />
               {successMessage && <p data-cy="success-message">{successMessage}</p>}
               <Dashboard />

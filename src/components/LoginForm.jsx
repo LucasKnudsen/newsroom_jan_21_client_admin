@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid, Header, Segment, Input, Button, Form } from 'semantic-ui-react'
+import { Grid, Segment, Input, Button, Form } from 'semantic-ui-react'
 import { signingIn } from '../modules/authenticationModules'
 
 const LoginForm = () => {
@@ -15,9 +15,6 @@ const LoginForm = () => {
   return (
     <Grid className="login-modal" textAlign='center' verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header style={{ fontSize: 30 }} color='blue' textAlign='center'>
-          GET CRACKIN'!
-          </Header>
         <Form onSubmit={(event) => signInAdmin(event)} data-cy="registration-form" size="large">
           <Segment raised>
             <Form.Field

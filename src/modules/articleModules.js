@@ -23,7 +23,7 @@ const createArticle = async (event, selectValue) => {
     teaser: event.target.teaser.value,
     body: event.target.body.value.split('\n\n'),
     article_type: event.target.article_type.value,
-    category: selectValue.toLowerCase(),
+    category: selectValue && selectValue.toLowerCase(),
     location: event.target.location.value
   }
   try {
