@@ -3,6 +3,7 @@ import { Grid, Header, Image } from 'semantic-ui-react'
 import { useSelector } from 'react-redux'
 import LoginForm from './LoginForm'
 import CreateForm from './CreateForm'
+import Dashboard from './Dashboard'
 import { validateToken } from '../modules/authenticationModules'
 import logo from '../assets/logo.png'
 
@@ -25,7 +26,7 @@ const MainView = () => {
             <>
               <Header size="huge" data-cy="welcome-message">Welcome back {name}!</Header>
               {message && <p data-cy="message">{message}</p>}
-              <CreateForm />
+              <Dashboard />
             </>
           )}
       </Grid.Column>

@@ -4,25 +4,25 @@
       "id": 1,
       "title": "MyTitle",
       "date": "2021-03-08",
-      "admin": {
+      "author": {
         "id": 1,
         "name": "Mr. Miyagi"
       }
     },
     {
       "id": 2,
-      "title": "MyTitle",
+      "title": "MyTitle2",
       "date": "2021-03-08",
-      "admin": {
+      "author": {
         "id": 1,
         "name": "Mr. Miyagi"
       }
     },
     {
       "id": 3,
-      "title": "MyTitle",
+      "title": "MyTitle3",
       "date": "2021-03-08",
-      "admin": {
+      "author": {
         "id": 1,
         "name": "Mr. Miyagi"
       }
