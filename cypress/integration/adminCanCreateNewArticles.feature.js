@@ -2,6 +2,11 @@ describe('admin can login to create a new article', () => {
   beforeEach(() => {
     cy.server()
     cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/admin_auth/validate_token',
+      response: ""
+    })
+    cy.route({
       method: 'POST',
       url: 'http://localhost:3000/api/admin_auth/sign_in',
       response: 'fixture:sign_in.json',
@@ -15,18 +20,18 @@ describe('admin can login to create a new article', () => {
       response: 'fixture:list_of_articles.json'
     })
     cy.visit('/')
-    cy.get('[data-cy="registration-form"]').within(() => {
-      cy.get('[data-cy="email-field"]').type('user@email.com')
-      cy.get('[data-cy="password-field"]').type('password')
-      cy.get('[data-cy="submit"]').click()
-    })
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/api/admin_auth/validate_token',
+      url: 'http://localhost:3000/api/admin_auth/validate_token**',
       response: 'fixture:sign_in.json',
       headers: {
         uid: 'user@gmail.com'
       }
+    })
+    cy.get('[data-cy="registration-form"]').within(() => {
+      cy.get('[data-cy="email-field"]').type('user@email.com')
+      cy.get('[data-cy="password-field"]').type('password')
+      cy.get('[data-cy="submit"]').click()
     })
 
   })

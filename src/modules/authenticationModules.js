@@ -16,9 +16,8 @@ const signingIn = async (event) => {
   try {
     let response = await auth.signIn(credentials.email, credentials.password)
     debugger
-    store.dispatch({ type: "AUTHENTICATE", payload: response.data})
+    store.dispatch({ type: "AUTHENTICATE", payload: response.data })
   } catch (error) {
-    debugger
     return error.response ? error.response.data.errors : error.message
   }
 }
