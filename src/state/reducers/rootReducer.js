@@ -8,10 +8,26 @@ const rootReducer = (state = initialState, action) => {
         authenticated: true,
         name: action.payload.name
       }
-    case "CREATE_ARTICLE":
+    case "FETCH_ARTICLES":
       return {
         ...state,
-        message: action.payload
+        articles: action.payload,
+        dashboardMessage: ''
+      }
+    case "SUCCESS_MESSAGE":
+      return {
+        ...state,
+        successMessage: action.payload
+      }
+    case "DASHBOARD_MESSAGE":
+      return {
+        ...state,
+        dashboardMessage: action.payload
+      }
+    case "FORM_MESSAGE":
+      return {
+        ...state,
+        formMessage: action.payload
       }
     default:
       return state
