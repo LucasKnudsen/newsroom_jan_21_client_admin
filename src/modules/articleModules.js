@@ -1,5 +1,6 @@
 import axios from 'axios'
 import store from '../state/stores/configureStore'
+import toBase64 from './imageEncoder'
 
 const getArticles = async () => {
   let auth_headers = JSON.parse(localStorage.getItem('auth-storage'))
@@ -18,13 +19,18 @@ const getArticles = async () => {
 const createArticle = async (event, selectValue) => {
   let auth_headers = JSON.parse(localStorage.getItem('auth-storage'))
   event.preventDefault()
+  let encodedImage
+  if (event.target.image.files[0]){
+    encodedImage = await toBase64(event.target.image.files[0])
+  } debugger
   let params = {
     title: event.target.title.value,
     teaser: event.target.teaser.value,
     body: event.target.body.value.split('\n\n'),
     article_type: event.target.article_type.value,
     category: selectValue && selectValue.toLowerCase(),
-    location: event.target.location.value
+    location: event.target.location.value,
+    image: encodedImage
   }
   try {
     let response = await axios.post('/admin/articles', params, { headers: auth_headers })

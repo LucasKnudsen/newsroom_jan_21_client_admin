@@ -78,6 +78,11 @@ const CreateForm = () => {
                 control={Input}
                 placeholder="What location is the article regarding?"
               />
+              <Form.Input
+              name="image"
+              label="uploading an image"
+              type="file"  
+              />
               <Form.Button color="blue" data-cy="submit-button">Submit</Form.Button>
               {formMessage && <p data-cy="form-message">{formMessage}</p>}
             </Grid.Column>
