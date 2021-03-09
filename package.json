@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "cypress": "4.1.0",
+    "cypress-file-upload": "^5.0.2",
     "start-server-and-test": "^1.12.0"
   }
 }
