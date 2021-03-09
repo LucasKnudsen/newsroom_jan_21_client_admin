@@ -2,7 +2,7 @@ import axios from 'axios'
 import store from '../state/stores/configureStore'
 
 const getArticles = async () => {
-  let auth_headers = JSON.parse(localStorage.getItem('credentials'))
+  let auth_headers = JSON.parse(localStorage.getItem('auth-storage'))
   try {
     let response = await axios.get('/admin/articles', { headers: auth_headers })
     if (response.data.articles) {
@@ -16,7 +16,7 @@ const getArticles = async () => {
 }
 
 const createArticle = async (event, selectValue) => {
-  let auth_headers = JSON.parse(localStorage.getItem('credentials'))
+  let auth_headers = JSON.parse(localStorage.getItem('auth-storage'))
   event.preventDefault()
   let params = {
     title: event.target.title.value,
