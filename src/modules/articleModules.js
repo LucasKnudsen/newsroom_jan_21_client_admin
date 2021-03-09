@@ -20,7 +20,7 @@ const createArticle = async (event, selectValue) => {
   let auth_headers = JSON.parse(localStorage.getItem('auth-storage'))
   event.preventDefault()
   let encodedImage
-  if (event.target.image.files[0]){
+  if (event.target.image.files[0]) {
     encodedImage = await toBase64(event.target.image.files[0])
   }
   let params = {
@@ -42,4 +42,8 @@ const createArticle = async (event, selectValue) => {
   }
 }
 
-export { createArticle, getArticles }
+const updateArticle = async (event, selectValue) => {
+
+}
+
+export { createArticle, getArticles, updateArticle }

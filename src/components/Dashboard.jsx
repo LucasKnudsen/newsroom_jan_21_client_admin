@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import { Segment, Item, Header} from 'semantic-ui-react'
+import { Segment, Item, Header } from 'semantic-ui-react'
 import { getArticles } from '../modules/articleModules'
 import { useSelector } from 'react-redux'
+import EditForm from './EditForm'
 
 const Dashboard = () => {
   const { articles, dashboardMessage } = useSelector(state => state)
@@ -19,6 +20,9 @@ const Dashboard = () => {
             <Item.Header data-cy="title">{article.title}</Item.Header>
             <Item.Meta data-cy="updated">Last updated: {article.date}</Item.Meta>
           </Item.Content>
+          <Item.Extra>
+            <EditForm article={article} floated='right' />
+          </Item.Extra>
         </Item>
       )
     })
