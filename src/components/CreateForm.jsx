@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Form, Grid, Modal, Segment, Input, TextArea, Button, Select } from 'semantic-ui-react'
+import { Form, Grid, Modal, Segment, Input, TextArea, Button, Image, Select } from 'semantic-ui-react'
 import { createArticle, getArticles } from '../modules/articleModules'
 import { useSelector } from 'react-redux'
 
 const CreateForm = () => {
   const [open, setOpen] = useState(false)
   const [selectValue, setSelectValue] = useState()
+  const [thumbnail, setThumbnail] = useState()
   const { formMessage } = useSelector(state => state)
 
   const articleCreator = async (event, selectValue) => {
@@ -24,7 +25,10 @@ const CreateForm = () => {
   return (
     <Modal
       onOpen={() => setOpen(true)}
-      onClose={() => setOpen(false)}
+      onClose={() => {
+        setOpen(false)
+        setThumbnail()
+      }}
       open={open}
       trigger={<Button color="blue" data-cy="create-button">Create an article</Button>}
     >
@@ -79,10 +83,13 @@ const CreateForm = () => {
                 placeholder="What location is the article regarding?"
               />
               <Form.Input
-              name="image"
-              label="uploading an image"
-              type="file"  
+              style={{overflow: 'auto'}}
+                name="image"
+                label="Upload an image"
+                type="file"
+                onChange={(event) => { setThumbnail(event.target.files[0]) }}
               />
+              {thumbnail && <Image centered size="small" alt="thumbnail" src={URL.createObjectURL(thumbnail)} />}
               <Form.Button color="blue" data-cy="submit-button">Submit</Form.Button>
               {formMessage && <p data-cy="form-message">{formMessage}</p>}
             </Grid.Column>
