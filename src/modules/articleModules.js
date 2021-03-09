@@ -23,7 +23,6 @@ const createArticle = async (event, selectValue) => {
   if (event.target.image.files[0]){
     encodedImage = await toBase64(event.target.image.files[0])
   }
-  debugger
   let params = {
     title: event.target.title.value,
     teaser: event.target.teaser.value,
