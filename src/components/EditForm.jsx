@@ -43,6 +43,7 @@ const EditForm = ({article}) => {
             <Grid.Column>
               <Form.Field
                 name="title"
+                value={article.title}
                 label="Title"
                 data-cy="title-field"
                 control={Input}
@@ -50,6 +51,7 @@ const EditForm = ({article}) => {
               />
               <Form.Field
                 name="teaser"
+                value={article.teaser}
                 label="Teaser"
                 data-cy="teaser-field"
                 control={TextArea}
@@ -57,6 +59,7 @@ const EditForm = ({article}) => {
               />
               <Form.Field
                 name="body"
+                value={article.body}
                 rows="5"
                 label="Content"
                 data-cy="body-field"
@@ -66,7 +69,7 @@ const EditForm = ({article}) => {
             </Grid.Column>
             <Grid.Column >
               <Form.Group inline >
-                <input data-cy="article-type-field" type="radio" id="experience" name="article_type" value="experience" />
+                <input data-cy="article-type-field" type="radio" id="experience" name="article_type" value="experience" checked="checked" />
                 <label for="experience">Experience</label>
                 <input data-cy="article-type-field" type="radio" id="story" name="article_type" value="story" />
                 <label for="story">Story</label>
@@ -74,6 +77,7 @@ const EditForm = ({article}) => {
               <Form.Field
                 onChange={(event) => setSelectValue(event.target.textContent)}
                 name="category"
+                value={article.category}
                 options={categories}
                 label="Category"
                 data-cy="category-field"
