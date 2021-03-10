@@ -11,7 +11,7 @@
           "article_type": "experience",
           "category": "trip",
           "location": "Frederiksdal",
-          "image": "https://news-room-team-1.s3.eu-north-1.amazonaws.com/f406icgj5whl3y379a3ts5kxr72w?response-content-disposition=inline%3B%20filename%3D%22seed_image.png%22%3B%20filename%2A%3DUTF-8%27%27seed_image.png&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIKNDI6ICZXWA675Q%2F20210310%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20210310T192316Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=99af5c811b184241e234cc79a08f027f844cbe8b94a50e4f4e4098d01231e009",
+          "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
           "date": "2021-03-09",
           "author": {
               "id": 1,
@@ -29,7 +29,7 @@
           "article_type": "experience",
           "category": "trip",
           "location": "Gothenburg",
-          "image": "https://news-room-team-1.s3.eu-north-1.amazonaws.com/63f3slgkmdxi6zangr3sgi0nroyg?response-content-disposition=inline%3B%20filename%3D%22seed_image.png%22%3B%20filename%2A%3DUTF-8%27%27seed_image.png&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIKNDI6ICZXWA675Q%2F20210310%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20210310T192316Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=bdcb3ac298eadeb324859af728a6a22bdae0626a3e4b0fb645b02064e801f788",
+          "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
           "date": "2021-03-09",
           "author": {
               "id": 1,
@@ -47,7 +47,7 @@
           "article_type": "experience",
           "category": "food",
           "location": "Gothenburg",
-          "image": "https://news-room-team-1.s3.eu-north-1.amazonaws.com/rh5uof1hju6dnveaf31h1f283ai0?response-content-disposition=inline%3B%20filename%3D%22seed_image.png%22%3B%20filename%2A%3DUTF-8%27%27seed_image.png&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIKNDI6ICZXWA675Q%2F20210310%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20210310T192316Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=1cbfcf8bb36d848ac805d6a8d31ad63f27852ce2369a4b67320c597a5ac678b8",
+          "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
           "date": "2021-03-09",
           "author": {
               "id": 1,
@@ -65,7 +65,7 @@
           "article_type": "story",
           "category": "event",
           "location": "Frederiksdal",
-          "image": "https://news-room-team-1.s3.eu-north-1.amazonaws.com/gdlsyft6dhjpordaz8ux167d0z4w?response-content-disposition=inline%3B%20filename%3D%22seed_image.png%22%3B%20filename%2A%3DUTF-8%27%27seed_image.png&response-content-type=image%2Fjpeg&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIKNDI6ICZXWA675Q%2F20210310%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20210310T192316Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8fb42417622b24d9ea727d30eea7aefded04cf1dfb293efd490971ddd47fe27d",
+          "image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
           "date": "2021-03-09",
           "author": {
               "id": 1,

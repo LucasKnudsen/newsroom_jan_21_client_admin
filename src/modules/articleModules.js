@@ -19,6 +19,32 @@ const getArticles = async () => {
 const createArticle = async (event, selectValue) => {
   let auth_headers = JSON.parse(localStorage.getItem('auth-storage'))
   event.preventDefault()
+  let params = extractFormValues(event, selectValue)
+  try {
+    let response = await axios.post('/admin/articles', params, { headers: auth_headers })
+    store.dispatch({ type: "SUCCESS_MESSAGE", payload: response.data.message })
+    return true
+  } catch (error) {
+    let message = error.response ? error.response.data.message : error.message
+    store.dispatch({ type: "FORM_MESSAGE", payload: message })
+  }
+}
+
+const updateArticle = async (event, selectValue, id) => {
+  let auth_headers = JSON.parse(localStorage.getItem('auth-storage'))
+  event.preventDefault()
+  let params = extractFormValues(event, selectValue)
+  try {
+    let response = await axios.put(`/admin/articles/${id}`, params, { headers: auth_headers })
+    store.dispatch({ type: "SUCCESS_MESSAGE", payload: response.data.message })
+    return true
+  } catch (error) {
+    let message = error.response ? error.response.data.message : error.message
+    store.dispatch({ type: "FORM_MESSAGE", payload: message })
+  }
+}
+
+const extractFormValues = async (event, selectValue) => {
   let encodedImage
   if (event.target.image.files[0]) {
     encodedImage = await toBase64(event.target.image.files[0])
@@ -32,18 +58,7 @@ const createArticle = async (event, selectValue) => {
     location: event.target.location.value,
     image: encodedImage
   }
-  try {
-    let response = await axios.post('/admin/articles', params, { headers: auth_headers })
-    store.dispatch({ type: "SUCCESS_MESSAGE", payload: response.data.message })
-    return true
-  } catch (error) {
-    let message = error.response ? error.response.data.message : error.message
-    store.dispatch({ type: "FORM_MESSAGE", payload: message })
-  }
-}
-
-const updateArticle = async (event, selectValue) => {
-
+  return params
 }
 
 export { createArticle, getArticles, updateArticle }

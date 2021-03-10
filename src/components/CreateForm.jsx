@@ -68,7 +68,6 @@ const CreateForm = () => {
               </Form.Group>
               <Form.Field
                 onChange={(event) => setSelectValue(event.target.textContent)}
-                value={selectValue}
                 name="category"
                 options={categories}
                 label="Category"

@@ -8,14 +8,19 @@ import { useSelector } from 'react-redux'
 // Prefill the form
 // Fix the styling
 
-const EditForm = ({article}) => {
+const EditForm = ({ article }) => {
   const [open, setOpen] = useState(false)
-  const [selectValue, setSelectValue] = useState()
-  const [thumbnail, setThumbnail] = useState()
+  const [title, setTitle] = useState(article.title)
+  const [teaser, setTeaser] = useState(article.teaser)
+  const [body, setBody] = useState(article.body)
+  const [articleType, setArticleType] = useState(article.article_type)
+  const [selectValue, setSelectValue] = useState(article.category)
+  const [location, setLocation] = useState(article.location)
+  const [thumbnail, setThumbnail] = useState(article.image)
   const { formMessage } = useSelector(state => state)
 
-  const articleCreator = async (event, selectValue) => {
-    let response = await updateArticle(event, selectValue)
+  const articleEditor = async (event, selectValue, id) => {
+    let response = await updateArticle(event, selectValue, id)
     response && setOpen(false)
     getArticles()
   }
@@ -38,51 +43,55 @@ const EditForm = ({article}) => {
       trigger={<Button color="blue" data-cy="edit-button">Edit</Button>}
     >
       <Segment padded >
-        <Form data-cy="edit-form" onSubmit={(event) => articleCreator(event, selectValue)}>
+        <Form data-cy="edit-form" onSubmit={(event) => articleEditor(event, selectValue, article.id)}>
           <Grid columns={2}>
             <Grid.Column>
               <Form.Field
                 name="title"
-                value={article.title}
                 label="Title"
                 data-cy="title-field"
                 control={Input}
                 placeholder="My Awesome Title"
+                value={title}
+                onChange={event => setTitle(event.target.value)}
               />
               <Form.Field
                 name="teaser"
-                value={article.teaser}
                 label="Teaser"
                 data-cy="teaser-field"
                 control={TextArea}
                 placeholder="Best damn article ever?"
+                value={teaser}
+                onChange={event => setTeaser(event.target.value)}
               />
               <Form.Field
                 name="body"
-                value={article.body}
+                content={body}
                 rows="5"
                 label="Content"
                 data-cy="body-field"
                 control={TextArea}
                 placeholder="Go nuts!"
+                value={body}
+                onChange={event => setBody(event.target.value)}
               />
             </Grid.Column>
             <Grid.Column >
               <Form.Group inline >
-                <input data-cy="article-type-field" type="radio" id="experience" name="article_type" value="experience" checked="checked" />
+                <input data-cy="article-type-field" type="radio" id="experience" name="article_type" value="experience" checked={articleType === 'experience'} onChange={event => setArticleType(event.target.value)} />
                 <label for="experience">Experience</label>
-                <input data-cy="article-type-field" type="radio" id="story" name="article_type" value="story" />
+                <input data-cy="article-type-field" type="radio" id="story" name="article_type" value="story" checked={articleType === 'story'} onChange={event => setArticleType(event.target.value)} />
                 <label for="story">Story</label>
               </Form.Group>
               <Form.Field
-                onChange={(event) => setSelectValue(event.target.textContent)}
                 name="category"
-                value={article.category}
                 options={categories}
                 label="Category"
                 data-cy="category-field"
                 control={Select}
                 placeholder="Select a category"
+                value={selectValue.toLowerCase()}
+                onChange={(event) => setSelectValue(event.target.textContent)}
               />
               <Form.Field
                 name="location"
@@ -90,16 +99,20 @@ const EditForm = ({article}) => {
                 data-cy="location-field"
                 control={Input}
                 placeholder="What location is the article regarding?"
+                value={location}
+                onChange={event => setLocation(event.target.value)}
               />
               <Form.Input
-              style={{overflow: 'auto'}}
+                style={{ overflow: 'auto' }}
                 name="image"
                 label="Upload an image"
                 type="file"
                 data-cy="image-field"
                 onChange={(event) => { setThumbnail(event.target.files[0]) }}
               />
-              {thumbnail && <Image data-cy="thumbnail" centered size="small" alt="thumbnail" src={URL.createObjectURL(thumbnail)} />}
+              {typeof thumbnail === 'object' && <Image data-cy="thumbnail" centered size="small" alt="thumbnail" src={URL.createObjectURL(thumbnail)} />}
+              {typeof thumbnail === 'string' && <Image data-cy="thumbnail" centered size="small" alt="thumbnail" src={thumbnail} />}
+
               <Form.Button color="blue" data-cy="submit-button">Update</Form.Button>
               {formMessage && <p data-cy="form-message">{formMessage}</p>}
             </Grid.Column>
