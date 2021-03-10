@@ -3,6 +3,11 @@ import { Form, Grid, Modal, Segment, Input, TextArea, Button, Image, Select } fr
 import { updateArticle, getArticles } from '../modules/articleModules'
 import { useSelector } from 'react-redux'
 
+// Write test
+// Configure the request / potentially we dont need to send anything, we pass down with props
+// Prefill the form
+// Fix the styling
+
 const EditForm = ({article}) => {
   const [open, setOpen] = useState(false)
   const [selectValue, setSelectValue] = useState()
@@ -30,10 +35,10 @@ const EditForm = ({article}) => {
         setThumbnail()
       }}
       open={open}
-      trigger={<Button color="blue" data-cy="create-button">Edit</Button>}
+      trigger={<Button color="blue" data-cy="edit-button">Edit</Button>}
     >
       <Segment padded >
-        <Form data-cy="create-form" onSubmit={(event) => articleCreator(event, selectValue)}>
+        <Form data-cy="edit-form" onSubmit={(event) => articleCreator(event, selectValue)}>
           <Grid columns={2}>
             <Grid.Column>
               <Form.Field
@@ -91,7 +96,7 @@ const EditForm = ({article}) => {
                 onChange={(event) => { setThumbnail(event.target.files[0]) }}
               />
               {thumbnail && <Image data-cy="thumbnail" centered size="small" alt="thumbnail" src={URL.createObjectURL(thumbnail)} />}
-              <Form.Button color="blue" data-cy="submit-button">Submit</Form.Button>
+              <Form.Button color="blue" data-cy="submit-button">Update</Form.Button>
               {formMessage && <p data-cy="form-message">{formMessage}</p>}
             </Grid.Column>
           </Grid>

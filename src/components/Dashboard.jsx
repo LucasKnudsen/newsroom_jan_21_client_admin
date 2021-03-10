@@ -6,9 +6,9 @@ import EditForm from './EditForm'
 
 const Dashboard = () => {
   const { articles, dashboardMessage } = useSelector(state => state)
-
   useEffect(() => {
     getArticles()
+
   }, [])
 
   let articleList

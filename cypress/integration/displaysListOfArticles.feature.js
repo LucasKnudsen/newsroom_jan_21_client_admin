@@ -20,14 +20,14 @@ describe('displays all of admins articles', () => {
 
     it('Displays a list of 3 articles', () => {
       cy.get('[data-cy="dashboard-wrapper"]')
-        .find('[data-cy="article-item"]').should('have.length', 3)
+        .find('[data-cy="article-item"]').should('have.length', 6)
     })
 
     it('The list shows expected content', () => {
       cy.get('[data-cy="dashboard-wrapper"]').within(() => {
         cy.get('[data-id="article-item-1"]').within(() => {
-          cy.get('[data-cy="title"]').should('contain', 'MyTitle')
-          cy.get('[data-cy="updated"]').should('contain', 'Last updated: 2021-03-08')
+          cy.get('[data-cy="title"]').should('contain', 'Experience Test 4')
+          cy.get('[data-cy="updated"]').should('contain', 'Last updated: 2021-03-09')
         })
       })
     })

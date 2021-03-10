@@ -68,6 +68,7 @@ const CreateForm = () => {
               </Form.Group>
               <Form.Field
                 onChange={(event) => setSelectValue(event.target.textContent)}
+                value={selectValue}
                 name="category"
                 options={categories}
                 label="Category"
@@ -83,7 +84,7 @@ const CreateForm = () => {
                 placeholder="What location is the article regarding?"
               />
               <Form.Input
-              style={{overflow: 'auto'}}
+                style={{ overflow: 'auto' }}
                 name="image"
                 label="Upload an image"
                 type="file"
