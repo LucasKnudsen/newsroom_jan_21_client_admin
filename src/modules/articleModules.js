@@ -33,7 +33,7 @@ const createArticle = async (event, selectValue) => {
 const updateArticle = async (event, selectValue, id) => {
   let auth_headers = JSON.parse(localStorage.getItem('auth-storage'))
   event.preventDefault()
-  let params = extractFormValues(event, selectValue)
+  let params = await extractFormValues(event, selectValue)
   try {
     let response = await axios.put(`/admin/articles/${id}`, params, { headers: auth_headers })
     store.dispatch({ type: "SUCCESS_MESSAGE", payload: response.data.message })

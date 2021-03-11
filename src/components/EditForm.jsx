@@ -3,10 +3,8 @@ import { Form, Grid, Modal, Segment, Input, TextArea, Button, Image, Select } fr
 import { updateArticle, getArticles } from '../modules/articleModules'
 import { useSelector } from 'react-redux'
 
-// Write test
-// Configure the request / potentially we dont need to send anything, we pass down with props
-// Prefill the form
 // Fix the styling
+// Manual testing & sad path
 
 const EditForm = ({ article }) => {
   const [open, setOpen] = useState(false)
@@ -40,7 +38,7 @@ const EditForm = ({ article }) => {
         setThumbnail()
       }}
       open={open}
-      trigger={<Button color="blue" data-cy="edit-button">Edit</Button>}
+      trigger={<Button color="blue" data-cy="edit-button" floated="right" style={{marginRight: 25}}>Edit</Button>}
     >
       <Segment padded >
         <Form data-cy="edit-form" onSubmit={(event) => articleEditor(event, selectValue, article.id)}>

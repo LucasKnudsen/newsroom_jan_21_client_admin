@@ -1,20 +1,23 @@
 describe('admin can edit their articles', () => {
-  describe('successfully', () => {
+  beforeEach(() => {
+    cy.server()
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/admin_auth/validate_token**',
+      response: 'fixture:sign_in.json',
+      headers: {
+        uid: 'user@gmail.com'
+      }
+    })
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/api/admin/articles',
+      response: 'fixture:list_of_articles.json'
+    })
+    cy.visit('/')
+  })
+  describe('successfully edits an article', () => {
     beforeEach(() => {
-      cy.server()
-      cy.route({
-        method: 'GET',
-        url: 'http://localhost:3000/api/admin_auth/validate_token**',
-        response: 'fixture:sign_in.json',
-        headers: {
-          uid: 'user@gmail.com'
-        }
-      })
-      cy.route({
-        method: 'GET',
-        url: 'http://localhost:3000/api/admin/articles',
-        response: 'fixture:list_of_articles.json'
-      })
       cy.route({
         method: 'PUT',
         url: 'http://localhost:3000/api/admin/articles/*',
@@ -22,9 +25,7 @@ describe('admin can edit their articles', () => {
           message: "The article was successfully updated!"
         }
       })
-      cy.visit('/')
     })
-
     it('displays a pre-filled form', () => {
       cy.get('[data-id="article-item-1"]').within(() => {
         cy.get('[data-cy="edit-button"]').click()
@@ -50,6 +51,27 @@ describe('admin can edit their articles', () => {
       })
       cy.get('[data-cy="success-message"]').should('contain', 'The article was successfully updated!')
       cy.get('[data-cy="edit-form"]').should('not.be.visible')
+    })
+  })
+  describe('unsuccessfully with empty field', () => {
+    beforeEach(() => {
+      cy.route({
+        method: 'PUT',
+        url: 'http://localhost:3000/api/admin/articles/*',
+        response: {
+          message: "Don't leave a field empty."
+        },
+        status: 422
+      })
+    })
+
+    it('displays an error message', () => {
+      cy.get('[data-id="article-item-1"]').within(() => {
+        cy.get('[data-cy="edit-button"]').click()
+      })
+      cy.get('[data-cy="teaser-field"]').clear()
+      cy.get('[data-cy="submit-button"]').click()
+      cy.get('[data-cy="form-message"]').should('contain', "Don't leave a field empty.")
     })
   })
 })
