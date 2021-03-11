@@ -8,7 +8,7 @@ const Dashboard = () => {
   const { articles, dashboardMessage } = useSelector(state => state)
   useEffect(() => {
     getArticles()
-  }, [])
+  }, [])  
 
   let articleList
   if (articles) {

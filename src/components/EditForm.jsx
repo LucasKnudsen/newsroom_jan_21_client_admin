@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+/* eslint-disable */
+import React, { useState, useEffect } from 'react'
 import { Form, Grid, Modal, Segment, Input, TextArea, Button, Image, Select } from 'semantic-ui-react'
 import { updateArticle, getArticles } from '../modules/articleModules'
 import { useSelector } from 'react-redux'
-
-// Fix the styling
-// Manual testing & sad path
 
 const EditForm = ({ article }) => {
   const [open, setOpen] = useState(false)
@@ -19,8 +17,24 @@ const EditForm = ({ article }) => {
 
   const articleEditor = async (event, selectValue, id) => {
     let response = await updateArticle(event, selectValue, id)
-    response && setOpen(false)
+    if (response) {
+      setOpen(false)
+    }
     getArticles()
+  }
+
+  useEffect(() => {
+    resetForm()
+  }, [])
+
+  const resetForm = () => {
+    setTitle(article.title)
+    setTeaser(article.teaser)
+    setBody(article.body)
+    setArticleType(article.article_type)
+    setSelectValue(article.category)
+    setLocation(article.location)
+    setThumbnail(article.image)
   }
 
   const categories = [
@@ -35,10 +49,10 @@ const EditForm = ({ article }) => {
       onOpen={() => setOpen(true)}
       onClose={() => {
         setOpen(false)
-        setThumbnail()
+        resetForm()
       }}
       open={open}
-      trigger={<Button color="blue" data-cy="edit-button" floated="right" style={{marginRight: 25}}>Edit</Button>}
+      trigger={<Button color="blue" data-cy="edit-button" floated="right" style={{ marginRight: 25 }}>Edit</Button>}
     >
       <Segment padded >
         <Form data-cy="edit-form" onSubmit={(event) => articleEditor(event, selectValue, article.id)}>

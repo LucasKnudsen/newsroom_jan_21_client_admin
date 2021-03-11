@@ -52,6 +52,20 @@ describe('admin can edit their articles', () => {
       cy.get('[data-cy="success-message"]').should('contain', 'The article was successfully updated!')
       cy.get('[data-cy="edit-form"]').should('not.be.visible')
     })
+
+    it('resets article content upon modal close', () => {
+      cy.get('[data-id="article-item-1"]').within(() => {
+        cy.get('[data-cy="edit-button"]').click()
+      })
+      cy.get('[data-cy="title-field"]').find('input').clear()
+      cy.get('.modals').click('topLeft')
+      cy.get('[data-id="article-item-1"]').within(() => {
+        cy.get('[data-cy="edit-button"]').click()
+      })
+      cy.get('[data-cy="edit-form"]').within(() => {
+        cy.get('[data-cy="title-field"]').find('input').should('have.value', 'Experience Test 4')
+      })
+    })
   })
   describe('unsuccessfully with empty field', () => {
     beforeEach(() => {
