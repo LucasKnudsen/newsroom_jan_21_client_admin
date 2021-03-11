@@ -63,7 +63,6 @@ const EditForm = ({ article }) => {
                 label="Title"
                 data-cy="title-field"
                 control={Input}
-                placeholder="My Awesome Title"
                 value={title}
                 onChange={event => setTitle(event.target.value)}
               />
@@ -72,7 +71,6 @@ const EditForm = ({ article }) => {
                 label="Teaser"
                 data-cy="teaser-field"
                 control={TextArea}
-                placeholder="Best damn article ever?"
                 value={teaser}
                 onChange={event => setTeaser(event.target.value)}
               />
@@ -83,7 +81,6 @@ const EditForm = ({ article }) => {
                 label="Content"
                 data-cy="body-field"
                 control={TextArea}
-                placeholder="Go nuts!"
                 value={body}
                 onChange={event => setBody(event.target.value)}
               />
@@ -101,7 +98,6 @@ const EditForm = ({ article }) => {
                 label="Category"
                 data-cy="category-field"
                 control={Select}
-                placeholder="Select a category"
                 value={selectValue.toLowerCase()}
                 onChange={(event) => setSelectValue(event.target.textContent)}
               />
@@ -110,7 +106,6 @@ const EditForm = ({ article }) => {
                 label="Location"
                 data-cy="location-field"
                 control={Input}
-                placeholder="What location is the article regarding?"
                 value={location}
                 onChange={event => setLocation(event.target.value)}
               />
